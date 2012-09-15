@@ -12,7 +12,7 @@ release date is mentioned as well
 
 =cut
 
-my $module = 'List::FullCompare';
+my $module = 'Auth::GoogleAuthenticator';
 
 (my $file = $module) =~ s!::!/!g;
 require "$file.pm";
