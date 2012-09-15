@@ -1,0 +1,16 @@
+<div id="page">
+      <div id="content">
+        <div id="header">
+        <h1>Configure two-factor authentification</h1>
+        </div>
+        <h2>Automatic configuration</h2>
+        <div>Scan this QR code</div>
+        <!-- <img src="/auth/setup/qr.png" alt="QR code for setting up two-factor configuration"> -->
+        <h2>Manual configuration</h2>
+        <ol>
+        <li>User account: <% session.user.name %></li>
+        <li>User key: <% auth.registration_key %></li>
+        <li>TBD: Regenerate a new token</li>
+        </ol>
+      </div>
+</div>

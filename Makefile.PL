@@ -12,10 +12,11 @@ WriteMakefile(
       : ()),
     PL_FILES            => {},
     PREREQ_PM => {
-        # Dancer prereqs
+        # Dancer app prereqs
         'Test::More' => 0,
         'YAML'       => 0,
         'Dancer'     => 1.3097,
+        'Dancer::Plugin::FlashMessage' => 0,
         # Auth::GoogleAuthenticator prereqs
         'Authen::OATH' => 0,
         'Convert::Base32' => 0,
