@@ -42,7 +42,7 @@ sub totp {
 
 sub verify {
     my ($self, $code, $ts) = @_;
-    return
+    return $code and
         $self->totp( $ts ) == $code;
 }
 
