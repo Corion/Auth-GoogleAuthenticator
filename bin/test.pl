@@ -3,8 +3,9 @@ use strict;
 use Auth::GoogleAuthenticator;
 
 my $auth = Auth::GoogleAuthenticator->new( secret => 'test@example.com');
-warn $auth->registration_key();
-warn $auth->totp();
-warn "Print these out:";
-warn join " ", @{$auth->{hotp}};
-warn $auth->verify( shift );
+print "Registration key " . $auth->registration_key() . "\n";
+print "Expected OTP value " . $auth->totp() . "\n";
+if( my $user_input = shift ) {
+    my $verified = $auth->verify( $user_input ) ? 'verified' : 'not verified';
+    print "$verified\n";
+};
