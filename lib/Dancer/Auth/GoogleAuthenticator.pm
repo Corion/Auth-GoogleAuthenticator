@@ -97,6 +97,10 @@ post '/auth/setup' => sub {
 
 get '/auth/login' => sub {
     my $return = vars->{requested_path} || '';
+    
+    # XXX Should only store relative URLs here, or at least
+    #     only site-local URLs
+    session->{return_url} = $return;
     template 'login';
 };
 
@@ -105,7 +109,7 @@ get '/auth/login' => sub {
 # XXX use session flash instead of session
 post '/auth/login' => sub {
     my ($user_id,$pass,$otp) = (params->{user}, params->{pass}, params->{otp});
-    my $return = vars->{requested_path} || '';
+    my $return = vars->{requested_path} || session->{return_url} || '';
     
     my $user= $users{ $user_id };
     if(     $user and $user->{pass}
