@@ -65,8 +65,10 @@ hook before => sub {
 get '/auth/setup' => sub {
     my ($user) = session->{user};
     
-    my ($otp_secret) = $users{$user}->{otp_secret};
+    my ($otp_secret) = $user->{otp_secret};
     my $auth = get_otp_auth( $user );
+    warning "Have auth for $user->{name}"
+        if $auth;
     
     # Display otp_secret if we have it
     # XXX Maybe this should be over SSH only
