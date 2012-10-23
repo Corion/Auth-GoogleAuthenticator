@@ -16,19 +16,18 @@ sub new {
 sub auth { $_[0]->{auth} };
 
 sub registration_qr_code {
-    # ...
+    my ($self, $label, $type) = @_;
+    # if we have an OTP, dislay the QRCode to the user
     require Imager::QRCode;
     my $qrcode = Imager::QRCode->new(
-        size          => 2,
-        margin        => 2,
-        version       => 1,
-        level         => 'M',
+        size => 4,
+        margin => 4,
+        version => 1,
+        level => 'M',
         casesensitive => 1,
-        lightcolor    => Imager::Color->new(255, 255, 255),
-        darkcolor     => Imager::Color->new(0, 0, 0),
     );
-    my $img = $qrcode->plot($self->registration_key);
-    $img->write( data => \my $res );
+    my $img = $qrcode->plot($self->registration_url($label, $type));
+    $img->write( data => \my $res, type => 'png' );
     $res
 }
 
