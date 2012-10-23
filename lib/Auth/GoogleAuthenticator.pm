@@ -41,6 +41,12 @@ sub totp {
     $self->auth->totp( $self->{secret}, $ts )
 };
 
+sub registration_url {
+    my ($self, $label, $type) = @_;
+    $type ||= 'totp';
+    return "otpauth://$type/$label?secret=" . $self->registration_key
+}
+
 sub verify {
     my ($self, $code, $ts) = @_;
     return $code and
