@@ -62,6 +62,27 @@ hook before => sub {
     }
 };
 
+post '/auth/setup' => sub {
+    my ($user) = session->{user};
+    
+    my $action= params->{action} || '';
+    my $enable= $action eq 'regenerate';
+    my $have_otp= $users{ $user }->{otp_secret};
+    
+    if( 'deactivate' eq $action ) {
+        warning "Erasing OTP secret for $user->{name}";
+        delete $user->{otp_secret};
+    } else {
+        warning "Generating random OTP secret for $user->{name}";
+        # Make up random OTP secret
+        # XXX Should be configurable/callback
+        my @letters = ('a'..'z','0'..'9');
+        $user->{otp_secret} = join '', map { $letters[rand @letters]} 1..10;
+    };
+    
+    redirect '/auth/setup';
+};
+
 get '/auth/setup' => sub {
     my ($user) = session->{user};
     
@@ -79,22 +100,25 @@ get '/auth/setup' => sub {
     };
 };
 
-post '/auth/setup' => sub {
+get '/auth/setup/qrcode.png' => sub {
     my ($user) = session->{user};
     
-    my $enable= params->{enable_otp};
-    my $have_otp= $users{ $user }->{otp_secret};
+    my ($otp_secret) = $user->{otp_secret};
     
-    if( !$enable and $have_otp ) {
-        delete $users{ $user }->{otp_secret};
+    if( $otp_secret ) {
+        my $auth = get_otp_auth( $user );
+        
+        if( $auth ) {
+            warning $auth->registration_url($user->{name});
+        
+            my $qr = $auth->registration_qr_code( "$user->{name} <OTP>" );
+            return send_file( \$qr, content_type => 'image/png' );
+        } else {
+            warning "No auth despite user?!";
+        };
     } else {
-        # Make up random OTP secret
-        # XXX Should be configurable/callback
-        my @letters = ('a'..'z','0'..'9');
-        $users{ $user }->{otp_secret} = map { $letters[rand @letters]} 1..16;
+        warning "No OTP set up for '$user->{name}'";
     };
-    
-    redirect '/auth/setup';
 };
 
 get '/auth/login' => sub {
