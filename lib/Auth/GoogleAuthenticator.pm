@@ -1,11 +1,12 @@
 package Auth::GoogleAuthenticator;
+use strict;
 use Authen::OATH;
 use Convert::Base32 ;
 
 sub new {
     my ($class, %args) = @_;
     if( $args{ secret_base32 }) {
-        $args{ secret } = decode_base32( delete $args{ $secret_base32 });
+        $args{ secret } = decode_base32( delete $args{ secret_base32 });
     };
     
     $args{ auth } ||= Authen::OATH->new();
