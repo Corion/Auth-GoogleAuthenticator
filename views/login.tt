@@ -9,6 +9,7 @@
           Available users are <tt>test</tt>, <tt>test2</tt> and <tt>admin</tt>.
           <% END %>
         </div>
+        <a href="/auth/setup">Two-factor setup</a>
         <h3>Log in</h3>
         <form name="login" method="POST" action="<% request.uri_base %>/auth/login"
             enctype="multipart/data">
