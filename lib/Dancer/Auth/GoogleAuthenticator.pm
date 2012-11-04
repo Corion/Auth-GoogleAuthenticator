@@ -111,7 +111,7 @@ get '/auth/setup/qrcode.png' => sub {
         if( $auth ) {
             warning $auth->registration_url($user->{name});
         
-            my $qr = $auth->registration_qr_code( "$user->{name} <OTP>" );
+            my $qr = $auth->registration_qr_code( "$user->{name}" );
             return send_file( \$qr, content_type => 'image/png' );
         } else {
             warning "No auth despite user?!";
