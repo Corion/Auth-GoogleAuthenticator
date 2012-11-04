@@ -110,4 +110,10 @@ important. They also are password equivalent. So, my recommendation
 is to store the recovery passphrases only as hashes, just
 like you store passwords.
 
+=head1 COMPATIBILITY
+
+At least on iDevices, using C<< < >> or C<< > >> made registering
+the generated accounts through QRcodes fail. The QRcodes work
+with Android devices.
+
 =cut
