@@ -21,6 +21,7 @@
               <input type="submit" value="Deactivate" />
           </form>
         <% ELSE %>
+          <div>Two factor authentication is disabled.</div>
           <form name="activate" method="POST" action="" enctype="multipart/data">
               <input type="hidden" name="action" value="regenerate" />
               <input type="submit" value="Activate" />
