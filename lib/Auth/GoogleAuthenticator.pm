@@ -1,8 +1,9 @@
 package Auth::GoogleAuthenticator;
 use strict;
 use Authen::OATH;
-use Convert::Base32 ;
+use Convert::Base32;
 use Math::Random::MT 'rand'; # to generate good passcodes
+use URI::Escape;
 
 sub new {
     my ($class, %args) = @_;
@@ -42,7 +43,7 @@ sub totp {
 };
 
 sub registration_url {
-    my ($self, $label, $type) = @_;
+    my ($self, uri_escape($label), $type) = @_;
     $type ||= 'totp';
     return "otpauth://$type/$label?secret=" . $self->registration_key
 }
