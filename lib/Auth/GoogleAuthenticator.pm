@@ -111,4 +111,10 @@ important. They also are password equivalent. So, my recommendation
 is to store the recovery passphrases only as hashes, just
 like you store passwords.
 
+=head1 SEE ALSO
+
+TOTP: Time-Based One-Time Password Algorithm
+
+L<http://tools.ietf.org/html/rfc6238>
+
 =cut
