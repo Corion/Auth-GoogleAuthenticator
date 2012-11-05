@@ -2,6 +2,7 @@ package Auth::GoogleAuthenticator;
 use strict;
 use Authen::OATH;
 use Convert::Base32 ;
+use Math::Random::MT 'rand'; # to generate good passcodes
 
 sub new {
     my ($class, %args) = @_;
@@ -115,5 +116,11 @@ like you store passwords.
 At least on iDevices, using C<< < >> or C<< > >> made registering
 the generated accounts through QRcodes fail. The QRcodes work
 with Android devices.
+
+=head1 SEE ALSO
+
+TOTP: Time-Based One-Time Password Algorithm
+
+L<http://tools.ietf.org/html/rfc6238>
 
 =cut
