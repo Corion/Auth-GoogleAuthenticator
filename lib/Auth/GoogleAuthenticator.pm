@@ -2,6 +2,7 @@ package Auth::GoogleAuthenticator;
 use strict;
 use Authen::OATH;
 use Convert::Base32 ;
+use Math::Random::MT 'rand'; # to generate good passcodes
 
 sub new {
     my ($class, %args) = @_;
