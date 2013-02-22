@@ -53,12 +53,11 @@ hook before => sub {
     return
         if request->path_info =~ m{^/(css|javascripts|400|500|favicon.ico|$)};
     if (! session('user') && request->path_info !~ m{^/auth/login}) {
-        # XXX We should store the redirect target internally
+        # We store the redirect target internally
         # and give the user
         # not an URL but an internal session as the redirect target
         var requested_path => request->path_info;
         request->path_info('/auth/login');
-        # We should redirect here!
         redirect '/auth/login';
     }
 };
