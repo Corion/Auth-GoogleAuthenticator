@@ -11,6 +11,6 @@ sessions/
 logs/
 ^images/
 MYMETA.*
-^Auth-GoogleAuthenticator-*/
+Auth-GoogleAuthenticator-*/
 Auth-GoogleAuthenticator-*.tar
 Auth-GoogleAuthenticator-*.tar.gz
