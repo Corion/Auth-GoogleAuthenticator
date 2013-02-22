@@ -75,7 +75,7 @@ post '/auth/setup' => sub {
     } else {
         warning "Generating random OTP secret for $user->{name}";
         # Make up random OTP secret
-        # XXX Should be configurable/callback
+        # XX Should be configurable/callback
         my @letters = ('a'..'z','0'..'9');
         $user->{otp_secret} = join '', map { $letters[rand @letters]} 1..10;
     };
@@ -92,7 +92,7 @@ get '/auth/setup' => sub {
         if $auth;
     
     # Display otp_secret if we have it
-    # XXX Maybe this should be over SSL only
+    # XX Maybe this should be over SSL only
     template 'setup_twofactor', {
         auth => $auth,
         user => $user,
@@ -124,7 +124,7 @@ get '/auth/setup/qrcode.png' => sub {
 get '/auth/login' => sub {
     my $return = vars->{requested_path} || '';
     
-    # XXX Should only store relative URLs here, or at least
+    # XX Should only store relative URLs here, or at least
     #     only site-local URLs
     session->{return_url} = $return;
     template 'login';
@@ -132,7 +132,6 @@ get '/auth/login' => sub {
 
 # Maybe also have "requires('password')"
 #                 "requires('twofactor')"
-# XXX use session flash instead of session
 post '/auth/login' => sub {
     my ($user_id,$pass,$otp) = (params->{user}, params->{pass}, params->{otp});
     my $return = vars->{requested_path} || session->{return_url} || '';
