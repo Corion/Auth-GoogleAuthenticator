@@ -46,8 +46,9 @@ sub totp {
 };
 
 sub registration_url {
-    my ($self, uri_escape($label), $type) = @_;
+    my ($self, $label, $type) = @_;
     $type ||= 'totp';
+    $label= uri_escape($label);
     return "otpauth://$type/$label?secret=" . $self->registration_key
 }
 
