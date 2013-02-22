@@ -5,6 +5,9 @@ use Convert::Base32;
 use Math::Random::MT 'rand'; # to generate good passcodes
 use URI::Escape;
 
+use vars qw($VERSION);
+$VERSION= '0.01';
+
 sub new {
     my ($class, %args) = @_;
     if( $args{ secret_base32 }) {

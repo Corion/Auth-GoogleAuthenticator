@@ -2,6 +2,7 @@ package Dancer::Auth::GoogleAuthenticator;
 use Dancer ':syntax';
 use Dancer::Plugin::FlashMessage;
 use Auth::GoogleAuthenticator;
+use vars qw($VERSION);
 
 =head1 NAME
 
@@ -9,7 +10,7 @@ Dancer::Auth::GoogleAuthenticator - Two-Factor demo app
 
 =cut
 
-our $VERSION = '0.01';
+$VERSION = '0.01';
 
 my %users = (
     test => { name => 'test',
@@ -92,7 +93,7 @@ get '/auth/setup' => sub {
         if $auth;
     
     # Display otp_secret if we have it
-    # XXX Maybe this should be over SSH only
+    # XXX Maybe this should be over SSL only
     template 'setup_twofactor', {
         auth => $auth,
         user => $user,

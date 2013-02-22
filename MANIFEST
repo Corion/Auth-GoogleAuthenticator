@@ -1,6 +1,7 @@
 .gitignore
 bin/app.pl
 bin/test.pl
+Changes
 config.yml
 environments/development.yml
 environments/production.yml
@@ -16,6 +17,8 @@ public/css/style.css
 public/dispatch.cgi
 public/dispatch.fcgi
 public/favicon.ico
+public/images/perldancer-bg.jpg
+public/images/perldancer.jpg
 public/javascripts/jquery.js
 t/001_base.t
 t/002_index_route.t
