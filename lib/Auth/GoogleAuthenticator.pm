@@ -6,7 +6,7 @@ use Math::Random::MT 'rand'; # to generate good passcodes
 use URI::Escape;
 
 use vars qw($VERSION);
-$VERSION= '0.01';
+$VERSION= '0.02';
 
 sub new {
     my ($class, %args) = @_;
@@ -54,8 +54,8 @@ sub registration_url {
 
 sub verify {
     my ($self, $code, $ts) = @_;
-    return $code and
-        $self->totp( $ts ) == $code;
+    return ($code and
+        $self->totp( $ts ) == $code);
 }
 
 1;
