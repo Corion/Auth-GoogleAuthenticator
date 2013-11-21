@@ -9,7 +9,7 @@ lib/Auth/GoogleAuthenticator.pm
 lib/Dancer/Auth/GoogleAuthenticator.pm
 Makefile.PL
 MANIFEST
-MANIFEST.skip
+MANIFEST.SKIP
 public/404.html
 public/500.html
 public/css/error.css
