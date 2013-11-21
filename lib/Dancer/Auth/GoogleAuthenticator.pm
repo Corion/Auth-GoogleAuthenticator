@@ -10,7 +10,7 @@ Dancer::Auth::GoogleAuthenticator - Two-Factor demo app
 
 =cut
 
-$VERSION= '0.02';
+$VERSION= '0.03';
 
 my %users = (
     test => { name => 'test',
