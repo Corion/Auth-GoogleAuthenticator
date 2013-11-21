@@ -14,3 +14,5 @@ Makefile$
 ^MYMETA.*
 Thumbs.db$
 .releaserc$
+^Auth-GoogleAuthenticator-.*.tar.gz$
+^Auth-GoogleAuthenticator/
