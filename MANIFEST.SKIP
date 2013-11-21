@@ -13,3 +13,4 @@ Makefile$
 ^.*\.swp$
 ^MYMETA.*
 Thumbs.db$
+.releaserc$
