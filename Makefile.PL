@@ -18,6 +18,7 @@ WriteMakefile(
         'YAML'       => 0,
         'Dancer'     => 1.3097,
         'Dancer::Plugin::FlashMessage' => 0,
+        'Template'   => 2, # Because Dancer::Plugin::TemplateToolkit does not require Template
 
         # Auth::GoogleAuthenticator prereqs
         'Authen::OATH' => 0,
