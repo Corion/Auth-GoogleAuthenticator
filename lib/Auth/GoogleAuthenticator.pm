@@ -13,7 +13,7 @@ sub new {
     if( $args{ secret_base32 }) {
         $args{ secret } = decode_base32( delete $args{ secret_base32 });
     };
-    
+
     $args{ auth } ||= Authen::OATH->new();
     bless \%args => $class;
 }
